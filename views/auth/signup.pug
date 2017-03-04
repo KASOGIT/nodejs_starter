@@ -1,0 +1,68 @@
+//- login
+extends ../layout.pug
+
+block titlePage
+  p Inscription
+
+block content
+  .container
+    .row.flex-center.my-5
+      .col-8
+        <!--Form with header-->
+        <div class="card">
+            <div class="card-block">
+                <!--Header-->
+                <div class="form-header mdb-color">
+                    <h3><i class="fa fa-user"></i> Inscription</h3>
+                </div>
+                <!--Body-->
+                form#account-form(action='/signup', method='post')
+                  <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    <input type="text" name="lastName" id="lastName" class="form-control">
+                    <label for="lastName">Nom</label>
+                  </div>
+                  <div class="md-form">
+                      <i class="fa fa-user prefix"></i>
+                      <input type="text" name="firstName" id="firstName" class="form-control">
+                      <label for="firstName">Prénom</label>
+                  </div>
+                  <div class="md-form">
+                      <i class="fa fa-envelope prefix"></i>
+                      <input type="email" name="email" id="email" class="form-control">
+                      <label for="email">Votre email</label>
+                  </div>
+                  <div class="md-form">
+                      <i class="fa fa-lock prefix"></i>
+                      <input type="password" name="password1" id="password1" class="form-control">
+                      <label for="password1">Votre mot de passe</label>
+                  </div>
+                  <div class="md-form">
+                      <i class="fa fa-lock prefix"></i>
+                      <input type="password" name="password2" id="password2" class="form-control">
+                      <label for="password2">Confirmer le mot de passe</label>
+                  </div>
+                  .row.justify-content-md-center.my-2
+                    .col-6.text-center
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-mdb active">
+                          <input type="radio" name="userType" value="CUSTOMER" id="option1" autocomplete="off" checked>Client
+                        </label>
+                        <label class="btn btn-mdb">
+                          <input type="radio" name="userType" value="PROFESSIONAL" id="option2" autocomplete="off">Professionel
+                        </label>
+                      </div>
+                  <hr>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-mdb">Inscription</button>
+                  </div>
+            </div>
+        </div>
+        <!--/Form with header-->
+        <!-- Modal -->
+        include ../modal/alert.pug
+        <!-- /Modal -->
+
+block append script
+  script(src='/javascripts/controllers/signupControler.js')
+  script(src='/javascripts/views/signup.js')

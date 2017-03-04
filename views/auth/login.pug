@@ -1,0 +1,56 @@
+//- login
+extends ../layout.pug
+
+block titlePage
+  p Connexion
+
+block content
+  .container
+    .row.flex-center.my-5
+      .col-8
+        <!--Form with header-->
+        <div class="card">
+          <div class="card-block">
+            <!--Header-->
+            <div class="form-header mdb-color">
+              <h3><i class="fa fa-lock"></i> Connexion</h3>
+            </div>
+            <!--Body-->
+            form#login-form(action='/login', method='post')
+              <div class="md-form">
+                <i class="fa fa-envelope prefix"></i>
+                <input id="email" type="text" name="email" class="form-control">
+                <label for="email">Votre email</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-lock prefix"></i>
+                <input id="password" type="password" name="password" class="form-control">
+                <label for="password">Votre mot de passe</label>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-mdb">Connexion</button>
+                <hr>
+                <fieldset class="form-group">
+                    <input type="checkbox" id="checkbox1" name="remember-me">
+                    <label for="checkbox1">Se rappeler de moi ?</label>
+                </fieldset>
+              </div>
+            </div>
+          <!--Footer-->
+          <div class="modal-footer">
+            <div class="options">
+              <p>Pas encore membre ? <a href="/signup">Enregistrez vous</a></p>
+              <p>Mot de passe <a id="act-forgot-pass" href="#">oublié ?</a></p>
+            </div>
+          </div>
+        </div>
+        <!--/Form with header-->
+        <!--modal -->
+        include ../modal/lost-password.pug
+        include ../modal/alert.pug
+
+
+block append script
+  script(src='/javascripts/form-validators/emailValidator.js')
+  script(src='/javascripts/controllers/loginController.js')
+  script(src='/javascripts/views/login.js')
